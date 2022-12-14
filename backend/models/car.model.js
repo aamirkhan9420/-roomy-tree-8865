@@ -1,3 +1,5 @@
+// car models
+
 const mongoose = require("mongoose");
 const carScema = mongoose.Schema({
   name: String,
