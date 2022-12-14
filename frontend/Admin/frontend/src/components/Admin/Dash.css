@@ -1,0 +1,22 @@
+.middlefun {
+    display:flex;
+    background-color: rgb(175, 245, 245);
+    justify-content: space-between;
+    gap:30px;
+    padding: 15px;
+    margin-bottom:10px;
+    border-radius: 8px;
+     
+}
+.middle{
+   width:75%;
+   text-align: center; 
+   margin:auto;
+
+}
+.man{
+    padding: 8px;
+    padding:4px 4px 4px 4px;
+    font-size: 20px;
+ 
+}
