@@ -22,4 +22,18 @@ HotelRoute.get("/:hotelID", async (req, res) => {
   }
 });
 
+
+HotelRoute.post("/",async(req,res)=>{
+  console.log(req.body)
+const payload=req.body
+try{
+const newHotel =new HotelModel(payload)
+await newHotel.save()
+res.status(200).send({"msg":"Hotel added successfully"})
+}catch(err){
+  console.log(err)
+  res.send(401).send({"msg":"something went wrong"})
+}
+})
+
 module.exports = { HotelRoute };
