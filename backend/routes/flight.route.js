@@ -3,7 +3,6 @@ const {FlightModel}=require("../models/flight.model")
 const FlightRoute=express.Router()
 
 FlightRoute.get("/",async(req,res)=>{
-console.log(query)
   let flights=await FlightModel.find()
   res.send(flights)
 })
