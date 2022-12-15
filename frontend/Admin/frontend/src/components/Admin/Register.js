@@ -85,20 +85,36 @@ const Register = () => {
             });
 
             const res = await data.json();
-            
+            console.log(res)
 
-            // if (res.status === 201) {
-                setInpval({ ...inpval, fname: "", email: "", password: "", cpassword: "" });
-                toastt( {
+            if(res.msg="Signup sucessfull"){
+
+                 toastt( {
                     position: "top-center",
                     description: "Registration Successfully done 😃!",
                     status: 'success',
-                    duration: 4000,
-                   isClosable: true,
+                    duration: 9000,
+                   isClosable: true,                                  
                 });
+                // toast.success("Registration Successfully done 😃!", {
+                //     position: "top-center"
+                // });
+                setInpval({ ...inpval, fname: "", email: "", password: "", cpassword: "" });
+
+                history("/")
+            }
+            
+
+            // if (res.status === 201) {
+                // toastt( {
+                //     position: "top-center",
+                //     description: "Registration Successfully done 😃!",
+                //     status: 'success',
+                //     duration: 9000,
+                //    isClosable: true,                                  
+                // });
                 
             }
-            history("/")
     }
 
     return (
@@ -140,7 +156,7 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <button className='btn' onClick={addUserdata}><NavLink to="/">Sign Up</NavLink></button>
+                        <button className='btn' onClick={addUserdata}>SigUp</button>
                         <p>Already have an account? <NavLink to="/">Log In</NavLink></p>
                     </form>
                     <ToastContainer />

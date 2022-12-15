@@ -64,19 +64,32 @@ const Login = () => {
             })
 
             const res = await data.json();
-            toastt( {
-             position: "top-center",
-             description: "LogIn Successfully done 😃!",
-             status: 'success',
-             duration: 4000,
-            isClosable: true,
-         });
-               localStorage.setItem("usersdatatoken",res.result.token);
-               setInpval({...inpval,email:"",password:""});
+            // console.log(res)
 
+            
+            if(res.msg=="Login successfull"){
+                console.log(res.token)
                
+                toastt( {
+                 position: "top-center",
+                 description: "LogIn Successfully done 😃!",
+                 status: 'success',
+                 duration: 4000,
+                isClosable: true,
+             });
+                localStorage.setItem("usertoken",res.token);
+                
+                setInpval({...inpval,email:"",password:""});
+                
+                history("/dashboard")
+                
+            }else{
+                toast.error("User dosen't exists", {
+                    position: "top-center"
+                });
             }
-            history("/dashboard")
+
+            }
 
     }
 
@@ -104,7 +117,7 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <button className='btn' onClick={loginuser}><NavLink to="/dashboard">Login</NavLink></button>
+                        <button className='btn' onClick={loginuser}>Login</button>
                         <p>Don't have an Account? <NavLink to="/register">Sign Up</NavLink> </p>
                     </form>
                     <ToastContainer />
