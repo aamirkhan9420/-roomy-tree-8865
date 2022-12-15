@@ -1,0 +1,9 @@
+.RoundCornerContainer_container{
+    border: 1px solid red;
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    height: 250px;
+    padding: 20px;
+    
+}
