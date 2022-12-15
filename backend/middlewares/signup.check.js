@@ -1,5 +1,7 @@
 const {UserModel}=require("../models/user.model")
 
+// for sign up check
+
 const signupcheck =async(req, res,next)=>{
     const {email,password}=req.body
 if(!email || !password)return res.status(400).send({"msg":"wrong creadendials"})

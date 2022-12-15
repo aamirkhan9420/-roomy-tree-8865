@@ -16,7 +16,7 @@ app.use("/flight", FlightRoute);
 app.use("/package", PackageRoute);
 app.use("/hotel", HotelRoute);
 
-app.listen(port, async () => {
+app.listen(8080, async () => {
   try {
     await dataBaseConnection;
     console.log({ msg: "connected to databse" });
