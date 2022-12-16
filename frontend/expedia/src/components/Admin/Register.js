@@ -101,7 +101,7 @@ const Register = () => {
                 // });
                 setInpval({ ...inpval, fname: "", email: "", password: "", cpassword: "" });
 
-                history("/")
+                history("/admin")
             }
             
 
@@ -157,7 +157,7 @@ const Register = () => {
                         </div>
 
                         <button className='btn' onClick={addUserdata}>SigUp</button>
-                        <p>Already have an account? <NavLink to="/">Log In</NavLink></p>
+                        <p>Already have an account? <NavLink to="/admin">Log In</NavLink></p>
                     </form>
                     <ToastContainer />
                 </div>

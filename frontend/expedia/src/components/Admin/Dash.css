@@ -20,3 +20,21 @@
     font-size: 20px;
  
 }
+
+.toggle--button{
+     border: none;
+  
+    background-color: rgb(147, 253, 137);
+    color: rgb(46, 45, 45);
+    cursor: pointer;
+    /* box-shadow: rgba(211, 247, 128, 0.35) 0px 5px 15px; */
+    box-shadow: rgba(228, 14, 14, 0.35) 0px 5px 15px;
+
+    
+    display: table;
+  }
+  
+  .toggle--close{
+    background-color: rgb(245, 134, 226);
+
+  }

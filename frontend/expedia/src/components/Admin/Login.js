@@ -35,7 +35,7 @@ const Login = () => {
         const { email, password } = inpval;
 
         if (email === "") {
-            toast.error("email is required!", {
+            toast.warning("email is required!", {
                 position: "top-center"
             });
         } else if (!email.includes("@")) {
@@ -43,11 +43,11 @@ const Login = () => {
                 position: "top-center"
             });
         } else if (password === "") {
-            toast.error("password is required!", {
+            toast.warning("password is required!", {
                 position: "top-center"
             });
         } else if (password.length < 6) {
-            toast.error("password must be 6 char!", {
+            toast.warning("password must be 6 char!", {
                 position: "top-center"
             });
         } else {
@@ -81,7 +81,7 @@ const Login = () => {
                 
                 setInpval({...inpval,email:"",password:""});
                 
-                history("/dashboard")
+                history("/admin/dashboard")
                 
             }else{
                 toast.error("User dosen't exists", {
@@ -118,7 +118,7 @@ const Login = () => {
                         </div>
 
                         <button className='btn' onClick={loginuser}>Login</button>
-                        <p>Don't have an Account? <NavLink to="/register">Sign Up</NavLink> </p>
+                        <p>Don't have an Account? <NavLink to="/admin/register">Sign Up</NavLink> </p>
                     </form>
                     <ToastContainer />
                 </div>
