@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import fetchData  from './fetchData'
-function getdata(){
-  return fetch("http://localhost:3000/tasks").then((res)=>{return res.json()})
-}
+import FetchData  from './fetchData'
+import axios from "axios"
+
+
+
 const Fetchproducts = () => {
-  const [data,setData] = useState([]);
-  const [loading,setLoading] = useState(false);
+const [data,setData] = useState([]);
+ const [loading,setLoading] = useState(true);
+
+const getdata=()=>{
+  axios.get("https://adorable-pear-earrings.cyclic.app/hotel").then((res)=>setData(res.data)).then(setLoading(false))
+  }
+
+
   useEffect(()=>{
-    handleData()
+getdata()
   },[])
 
-  const handleData=async()=>{
-    try{
-       setLoading(true)
-       const data = await getdata();
-       setData(data)
-       setLoading(false)
-    }
-    catch(err){
-       setLoading(false)
-       console.log(err)
-    }
-  }
+
+
+ 
+
+
+
   return (
     <div>
       {
         loading && <h2>Loading...</h2>
       }
-       {
-        data.map((elem)=>(<fetchData key={elem.id}  />))
-       }
+
+      {data[0] && data.map((ele)=>(
+      <FetchData key={ele._id} ele={ele}/>
+      ))}
+      
     </div>
   )
 }

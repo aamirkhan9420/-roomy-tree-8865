@@ -5,7 +5,7 @@ import { Stack } from '@chakra-ui/react'
 import { Radio } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import React from 'react';
-import './Productpage.css';
+
 import { IoIosStarOutline } from "react-icons/io";
 const Fliters = () => {
   return (
@@ -88,7 +88,7 @@ const Fliters = () => {
        <Box lineHeight="10px">
           <Text  margin="20px 0px"  textAlign="left" fontSize="lg" >Accessibility</Text>
           <Stack>
-          <Checkbox>Sign language-capable staff</Checkbox> <br />
+          <Checkbox>Sign language-capable </Checkbox> <br />
           <Checkbox>Accessible bathroom</Checkbox> <br />
           <Checkbox >Roll-in shower</Checkbox> <br />
           </Stack>
