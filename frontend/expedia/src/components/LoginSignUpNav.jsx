@@ -1,9 +1,10 @@
 import { AddIcon, ArrowBackIcon } from "@chakra-ui/icons"
 import { Box, Image } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 const style1 = {
     borderBottom: "1px solid rgb(204, 204, 204)",
-    height: "50px"
+    height: "55px"
 }
 
 const style2 = {
@@ -20,10 +21,12 @@ export default function LoginSignUpNav() {
         <Box style={style1}>
             <Box style={style2} >
                 <Box>
+                    <Link to={"/"}>
                     <AddIcon as={ArrowBackIcon} w={6} h={6} color='blue.500' />
+                    </Link>
                 </Box>
                 <Box>
-                    <Image src='https://www.expedia.co.in/_dms/header/logo.svg?locale=en_GB&siteid=27&2' alt='web-Logo' />
+                    <Image src='./exprobook.png' alt='web-Logo' w={"150px"}/>
                 </Box>
                 <Box>
 

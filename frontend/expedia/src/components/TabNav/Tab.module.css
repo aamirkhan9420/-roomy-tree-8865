@@ -1,0 +1,12 @@
+.calendar{
+   width: 200px !important; 
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+  
+    width: 25px;
+    height: 25px;
+    border-width: thin;
+}

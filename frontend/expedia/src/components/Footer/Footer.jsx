@@ -19,7 +19,7 @@ export default function Footer() {
         <h1>Expedia Group</h1>
         <div className={style.gridcolumn}>
           <TableContainer size='sm'>
-            <Table variant='simple'>
+            <Table variant='none'>
 
               <Thead>
                 <Tr>

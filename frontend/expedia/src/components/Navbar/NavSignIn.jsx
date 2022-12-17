@@ -31,7 +31,9 @@ export default function NavSignIn() {
                             Sign in
                         </Button>
                     </Link>
+                    <Link to={"/Signup"}>
                     <Button variant='white' w='90%' display='block' m='auto'>Create a free acount</Button>
+                    </Link>
                     <MenuItem p='11px 0px 11px 20px'>List of favourites</MenuItem>
                     <MenuItem p='11px 0px 11px 20px'>Expedia Rewards</MenuItem>
                     <MenuDivider />

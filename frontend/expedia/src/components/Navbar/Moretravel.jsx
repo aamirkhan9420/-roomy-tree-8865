@@ -12,7 +12,7 @@ export default function Moretravel() {
                 <MenuButton _hover={{
                     background: "white",
                     color: "blue",
-                }} bg='white' variant='blue' size='sm' as={Button} rightIcon={<ChevronDownIcon w={5} h={5} />}>
+                }} bg='white' variant='blue' size='sm'mb={"2px"} as={Button} rightIcon={<ChevronDownIcon w={5} h={5} />}>
                     More travel
                 </MenuButton>
                 <MenuList boxShadow='2xl' color='#343B53' w='370px'>
