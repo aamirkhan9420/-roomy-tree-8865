@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react';
 import React from 'react'
+import Map from './map';
 
 const Toppage = () => {
   return (
@@ -20,23 +21,13 @@ const Toppage = () => {
       </Flex>
       <Box margin="30px" width="">
         <Flex>
-            <Box flex="1" >map</Box>
-            <Box style={{textAlign:"left"}} flex="2">
-                <p>689 People</p>
-                <h2>See how we pick our recommended properties</h2>
-            </Box>
-            <Box margin="10px" flex="1">
-            <Select placeholder='Recomended' size='lg'>
-                <option value='option1'>Price:High to low</option>
-                <option value='option2'>Price:low to High</option>
-                <option value='option3'>Distance from down town</option>
-                <option value='option3'>Guest rating</option>
-                <option value='option3'>Star tating</option>
-                </Select>
-            </Box>
+            <Box flex="1" ><Map/></Box>
+           
+          
         </Flex>
-        `
+        
       </Box>
+      
     </Box>
   )
 }

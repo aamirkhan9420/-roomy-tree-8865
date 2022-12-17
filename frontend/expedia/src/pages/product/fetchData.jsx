@@ -11,6 +11,7 @@ import {
 import React from "react";
 
 const FetchData = ({ ele }) => {
+
   const {
     hotelDesc,
     hotelFees,
@@ -20,6 +21,7 @@ const FetchData = ({ ele }) => {
     hotelTag,
     rating,
     totalFees,
+    _id
   } = ele;
   return (
     <Card
