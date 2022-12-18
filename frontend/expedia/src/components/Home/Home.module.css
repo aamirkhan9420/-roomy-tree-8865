@@ -5,11 +5,15 @@
     margin: auto;
     margin-top: 50px;
     width: 80%;
-    height: 400px;
+    height: 20%;
     border-radius: 10px;
-   
+ 
+    /* border: 1px solid red; */
 }
 
 .home_big_img_div>img{
     border-radius: 10px; 
+    height: 100%;
+    width: 100%;
+   
 }
