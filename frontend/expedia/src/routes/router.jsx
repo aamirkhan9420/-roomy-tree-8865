@@ -1,14 +1,29 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from '../components/Home'
-import Productpage from '../pages/product/Productpage'
+
+import Account from '../components/Account/Account'
+import Home from '../components/Home/Home'
+import Login from '../components/Login/Login'
+import Signup from '../components/Signup/Signup'
+
+
+
+
+
 
 export default function Router() {
   return (
     <div>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='/product' element={<Productpage/>}/>
+
+          <Route path='/Login' element={<Login />}/>
+          <Route path='/Signup' element={<Signup />}/>
+          <Route path='/Account' element={<Account />}/>
+
+          
+
+
         </Routes>
     </div>
   )
