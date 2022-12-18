@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image,Stack,Text,Heading,Button, Card, CardBody, CardFooter, InputGroup, InputLeftAddon, Input } from '@chakra-ui/react'
+import {Image,Stack,Text,Heading,Button, Card, CardBody, CardFooter, InputGroup, InputLeftAddon, Input, Box, SimpleGrid } from '@chakra-ui/react'
 import style from "./Gowithapp.module.css"
 import { useState } from 'react'
 export default function Gowithapp() {
@@ -12,7 +12,7 @@ export default function Gowithapp() {
   variant='outline'
   width="80%"
   m="auto"
-  mt="180px"
+  mt="50px"
   >
   <Image
     objectFit='cover'
@@ -43,24 +43,26 @@ export default function Gowithapp() {
     <CardFooter display="flex" 
  gap="20px"
  >
-    <Stack   display="flex"   direction={{ base: 'column', sm: 'row' }}
-    overflow='hidden'
-    variant='outline'>
-  <InputGroup>
+    
+ 
+ 
+
+ 
+
+
+<SimpleGrid columns={[1,null,null,2]} spacing='10px'>
+  <Box > <InputGroup>
     <InputLeftAddon children='+91' /> 
      <InputGroup>
   <Input  placeholder='phone number' />
    </InputGroup>
-   </InputGroup>
- 
-
- 
-
-</Stack>
-     
-      <Button variant='solid' colorScheme='blue' w="150px" onClick={()=>setClick(!isClick)}>
+   </InputGroup></Box>
+  <Box > <Button variant='solid' colorScheme='blue' w={"40%"} paddingLeft={"50%"} paddingRight={"50%"} onClick={()=>setClick(!isClick)}>
         Get the app
-      </Button>
+      </Button></Box>
+ 
+</SimpleGrid>
+    
       
     </CardFooter>
    

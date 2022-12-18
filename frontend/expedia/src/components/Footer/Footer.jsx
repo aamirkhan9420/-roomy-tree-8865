@@ -12,7 +12,12 @@ import {
   TableContainer,
  
 } from '@chakra-ui/react'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 export default function Footer() {
+  const navigate=useNavigate()
+  const handleaboutus=()=>{
+    navigate("/aboutus")
+  }
   return (
     <div className={style.footer_cotainer}>
       <div className={style.footer_main}>
@@ -31,7 +36,9 @@ export default function Footer() {
               </Thead>
               <Tbody>
                 <Tr>
-                  <Td>About us</Td>
+                  
+                  <Td onClick={handleaboutus} cursor={"pointer"}>About us</Td>
+                  
                   <Td>India travel guide</Td>
                   <Td >Privacy statements</Td>
                   <Td >Support</Td>
