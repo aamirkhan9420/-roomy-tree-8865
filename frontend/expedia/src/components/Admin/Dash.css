@@ -1,0 +1,40 @@
+.middlefun {
+    display:flex;
+    background-color: rgb(175, 245, 245);
+    justify-content: space-between;
+    gap:30px;
+    padding: 15px;
+    margin-bottom:10px;
+    border-radius: 8px;
+     
+}
+.middle{
+   width:75%;
+   text-align: center; 
+   margin:auto;
+
+}
+.man{
+    padding: 8px;
+    padding:4px 4px 4px 4px;
+    font-size: 20px;
+ 
+}
+
+.toggle--button{
+     border: none;
+  
+    background-color: rgb(147, 253, 137);
+    color: rgb(46, 45, 45);
+    cursor: pointer;
+    /* box-shadow: rgba(211, 247, 128, 0.35) 0px 5px 15px; */
+    box-shadow: rgba(228, 14, 14, 0.35) 0px 5px 15px;
+
+    
+    display: table;
+  }
+  
+  .toggle--close{
+    background-color: rgb(245, 134, 226);
+
+  }
