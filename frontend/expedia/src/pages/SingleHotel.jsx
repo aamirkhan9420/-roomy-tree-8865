@@ -28,18 +28,26 @@ import {
   FaPlaneDeparture,
   FaCar,
 } from "react-icons/fa";
+import { Skeleton } from "@chakra-ui/react";
 
 const SinglePage = () => {
+
   let { HotelID } = useParams();
   console.log(HotelID)
   const [data, setData] = useState({});
+  const [loading,setLoading]=useState(true)
 
   const getdata = () => {
+    setLoading(true)
     axios
       .get(
         `https://adorable-pear-earrings.cyclic.app/hotel/${HotelID}`
       )
-      .then((res) => setData(res.data));
+      .then((res) =>{ 
+        
+        setData(res.data)
+        setLoading(false)
+      });
   };
 
   useEffect(() => {
@@ -60,7 +68,13 @@ const SinglePage = () => {
 
   return (
     <div>
+
+
+
 <Navbar/>
+
+{loading && <Skeleton height="600px"/>}
+
       {data && (
         <Box padding="1.5">
           {" "}
@@ -75,7 +89,8 @@ const SinglePage = () => {
               objectFit="cover"
               src={hotelPic}
               alt={hotelName}
-              width="40%"
+              width="30%" 
+              maxHeight="350px"
             />
 
             <Stack>
