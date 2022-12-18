@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import {
   Tabs,
   TabList,
@@ -39,6 +39,7 @@ const Banned = () => {
       .then((res) => {
         console.log(res);
 
+       
         setNotes(res);
         setLoading(false);
       })
@@ -48,17 +49,32 @@ const Banned = () => {
       });
   }, []);
 
+  const deletbtn = (noteID) => {
+
+    toast.success("User Removed successfully", {
+      position: "top-center",
+    });
+    
+    console.log(noteID);
+    fetch(`https://adorable-pear-earrings.cyclic.app/banned/${noteID}`, {
+      method: "DELETE",
+      // headers : {
+      //     "Authorization" : `Bearer ${localStorage.getItem("psctoken")}`
+      // }
+    });
+    // window.location.reload();
+  };
+
   return (
     <>
       {
-        
         <ChakraProvider>
           <TableContainer>
             <Table size="md">
               <Thead>
                 <Tr>
                   <Th>Email</Th>
-                 
+                  <Th>Operation</Th>
                 </Tr>
               </Thead>
 
@@ -73,7 +89,15 @@ const Banned = () => {
                         <Tr>
                           <Td>{note.email}</Td>
 
-                          <Td></Td>
+                          <Td>
+                            <Button
+                              variant="solid"
+                              colorScheme="blue"
+                              onClick={() => deletbtn(note._id)}
+                            >
+                              Active
+                            </Button>
+                          </Td>
                         </Tr>
                       </>
                     );

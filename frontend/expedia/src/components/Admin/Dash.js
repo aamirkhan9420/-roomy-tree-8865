@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Tablee from "./Table";
 import Banned from "./Banned";
+import Hotel from "./Hotel";
 
 import {
   Tabs,
@@ -110,8 +111,9 @@ const Dash = () => {
         <Tabs className="middle">
           <TabList className="middlefun">
             <Tab className="man">Users</Tab>
-            <Tab className="man">Add Room</Tab>
             <Tab className="man">Banned Users</Tab>
+            <Tab className="man">Add Room</Tab>
+            <Tab className="man">Hotels Lists </Tab>
           </TabList>
 
           <TabPanels>
@@ -119,12 +121,18 @@ const Dash = () => {
               <Tablee/>
             </TabPanel>
 
+          
+            <TabPanel>
+            <Banned />
+            </TabPanel>
+
             <TabPanel>
               <SimpleCard />
             </TabPanel>
 
+
             <TabPanel>
-            <Banned />
+            <Hotel />
             </TabPanel>
           </TabPanels>
         </Tabs>
