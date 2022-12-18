@@ -111,7 +111,7 @@ export default function TabNav() {
               </InputGroup>
 
             </Box>*/}
-            <Link to={"/"}>
+            <Link to={"/hotel"}>
               <Button colorScheme='messenger' paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
             </Link>
           </TabPanel>

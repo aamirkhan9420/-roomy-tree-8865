@@ -3,9 +3,13 @@ import Filters from "./Fliters";
 import Fetchproducts  from './Fetchproducts';
 import { Box, Flex} from '@chakra-ui/react';
 import Toppage from './Toppage';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 const Productpage = () => {
   return (
-    <Box style={{width:"90%", margin:"auto"}}>
+    <Box>
+      <Navbar/>
+      <Box  style={{width:"90%", margin:"auto"}}>
       <Box>
         <Toppage/>
       </Box>
@@ -17,6 +21,8 @@ const Productpage = () => {
             <Fetchproducts/>
           </Box>
       </Flex>
+    </Box>
+    <Footer/>
     </Box>
   )
 }

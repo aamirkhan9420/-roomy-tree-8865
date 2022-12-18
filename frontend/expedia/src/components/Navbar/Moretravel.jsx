@@ -16,7 +16,7 @@ export default function Moretravel() {
                     More travel
                 </MenuButton>
                 <MenuList boxShadow='2xl' color='#343B53' w='370px'>
-                    <Link to={"/"}>
+                    <Link to={"/hotel"}>
                     <MenuItem p='11px 0px 11px 20px' ><i style={IconStyle} className="fa-solid fa-building"></i> &nbsp;  &nbsp;  &nbsp;Stays</MenuItem>
                     </Link>
                     <Link to={"/"}>

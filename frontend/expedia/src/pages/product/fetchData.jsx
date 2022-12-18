@@ -12,9 +12,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const FetchData = ({ ele }) => {
-const SelectedHotel=(id)=>{
-console.log(id)
-}
+
   const {
     hotelDesc,
     hotelFees,
@@ -34,7 +32,7 @@ console.log(id)
       textAlign="start"
     >
       <Link to={`/hotel/${_id}`}>
-      <Image onClick={()=>SelectedHotel(_id)}
+      <Image 
         objectFit="cover"
         maxW={{ base: "100%", sm: "300px" }}
         src={hotelPic}
