@@ -24,7 +24,8 @@ const Tablee = () => {
   const [notes, setNotes] = useState("");
   const [state, setState] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
+
+  const getdata=()=>{
     setLoading(true);
     fetch("https://adorable-pear-earrings.cyclic.app/user", {})
       .then((res) => res.json())
@@ -38,6 +39,9 @@ const Tablee = () => {
         setError(true);
         setLoading(false);
       });
+  }
+  useEffect(() => {
+    getdata()
   }, []);
 
   const addbtn = (email) => {
@@ -51,7 +55,10 @@ const Tablee = () => {
       body: JSON.stringify({
         email,
       }),
-    });
+    })
+    .then(()=>{
+    getdata()
+    })
     // window.location.reload();
   };
 
