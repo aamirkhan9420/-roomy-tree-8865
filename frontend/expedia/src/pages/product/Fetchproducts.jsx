@@ -7,10 +7,11 @@ import { Box, Select } from '@chakra-ui/react'
 
 const Fetchproducts = () => {
 const [data,setData] = useState([]);
+const [sort,setsort]=useState(1)
 
 
 const getdata=()=>{
-  axios.get("https://adorable-pear-earrings.cyclic.app/hotel").then((res)=>setData(res.data))
+  axios.get(`https://adorable-pear-earrings.cyclic.app/hotel?sort=${sort}`).then((res)=>setData(res.data))
   }
 
 
@@ -19,11 +20,11 @@ getdata()
   },[])
 
 const sortingFunc=(e)=>{
- console.log(e.target.value)
+ setsort(e.target.value)
 }
 
  
-
+console.log("sort",sort)
 
 
   return (
@@ -33,8 +34,8 @@ const sortingFunc=(e)=>{
       }
        <Box margin="10px" flex="1">
             <Select onChange={sortingFunc} placeholder='Recomended' size='lg'>
-                <option value='High'>Price:High to low</option>
-                <option value='low'>Price:low to High</option>
+                <option value={-1}>Price:High to low</option>
+                <option value={1}>Price:low to High</option>
                 </Select>
             </Box>
 
