@@ -7,7 +7,7 @@ import Map from './map';
 
 const Toppage = () => {
   return (
-    <Box >
+    <Box mt="40px">
       <Flex gap="43px">
       <Input placeholder="Going to hyderabadh" boxShadow='outline' p='6' rounded='md' bg='white' htmlSize={40} width='auto' /> 
       <Input type="date" boxShadow='outline' p='6' rounded='md' bg='white' htmlSize={20}  width='auto' />

@@ -15,6 +15,8 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Map from "./product/map";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 import {
   FaWifi,
   FaAirFreshener,
@@ -58,6 +60,7 @@ const SinglePage = () => {
 
   return (
     <div>
+<Navbar/>
       {data && (
         <Box padding="1.5">
           {" "}
@@ -223,6 +226,7 @@ const SinglePage = () => {
           </Box>
         </Box>
       )}
+      <Footer/>
     </div>
   );
 };

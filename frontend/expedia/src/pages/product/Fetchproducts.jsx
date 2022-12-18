@@ -11,7 +11,7 @@ const [sort,setsort]=useState(1)
 
 
 const getdata=()=>{
-  axios.get(`https://adorable-pear-earrings.cyclic.app/hotel?sort=${sort}`).then((res)=>setData(res.data))
+  axios.get(`https://adorable-pear-earrings.cyclic.app/hotel`).then((res)=>setData(res.data))
   }
 
 

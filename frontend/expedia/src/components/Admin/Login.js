@@ -4,7 +4,7 @@ import { ToastContainer,toast} from 'react-toastify';
 import {  useToast } from "@chakra-ui/react"
 import "./mix.css"
 
-const Login = () => {
+const AdminLogin = () => {
 
     const [passShow, setPassShow] = useState(false);
     const toastt = useToast()
@@ -128,4 +128,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default AdminLogin
