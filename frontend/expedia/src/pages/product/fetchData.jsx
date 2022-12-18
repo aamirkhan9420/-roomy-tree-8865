@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FetchData = ({ ele }) => {
 
@@ -30,12 +31,14 @@ const FetchData = ({ ele }) => {
       variant="outline"
       textAlign="start"
     >
-      <Image
+      <Link to={`/hotel/${_id}`}>
+      <Image 
         objectFit="cover"
         maxW={{ base: "100%", sm: "300px" }}
         src={hotelPic}
         alt={hotelName}
       />
+      </Link>
 
       <Stack>
         <CardBody>

@@ -24,12 +24,12 @@ const Tablee = () => {
   const [notes, setNotes] = useState("");
   const [state, setState] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
+
+  const getdata=()=>{
     setLoading(true);
     fetch("https://adorable-pear-earrings.cyclic.app/user", {})
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
 
         setNotes(res);
         setLoading(false);
@@ -38,10 +38,13 @@ const Tablee = () => {
         setError(true);
         setLoading(false);
       });
+  }
+  useEffect(() => {
+    getdata()
   }, []);
 
   const addbtn = (email) => {
-    console.log(email);
+    
     setState(!state);
     fetch(`https://adorable-pear-earrings.cyclic.app/banned`, {
       method: "POST",
@@ -51,7 +54,10 @@ const Tablee = () => {
       body: JSON.stringify({
         email,
       }),
-    });
+    })
+    .then(()=>{
+    getdata()
+    })
     // window.location.reload();
   };
 
