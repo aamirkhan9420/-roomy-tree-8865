@@ -32,7 +32,8 @@ const Banned = () => {
   const [notes, setNotes] = useState("");
   const [state, setState] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
+  
+  const getdata=()=>{
     setLoading(true);
     fetch("https://adorable-pear-earrings.cyclic.app/banned", {})
       .then((res) => res.json())
@@ -47,6 +48,10 @@ const Banned = () => {
         setError(true);
         setLoading(false);
       });
+  }
+
+  useEffect(() => {
+   getdata()
   }, []);
 
   const deletbtn = (noteID) => {
@@ -61,8 +66,11 @@ const Banned = () => {
       // headers : {
       //     "Authorization" : `Bearer ${localStorage.getItem("psctoken")}`
       // }
-    });
-    // window.location.reload();
+    })
+    .then(()=>{
+      getdata()
+    })
+ 
   };
 
   return (
