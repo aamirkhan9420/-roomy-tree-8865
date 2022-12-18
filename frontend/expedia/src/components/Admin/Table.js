@@ -5,15 +5,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import {
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  Button,
-} from "@chakra-ui/react";
-
-import {
   Table,
   Thead,
   Tbody,
@@ -24,6 +15,7 @@ import {
   TableCaption,
   TableContainer,
   ChakraProvider,
+  Button,
 } from "@chakra-ui/react";
 
 const Tablee = () => {
@@ -48,96 +40,36 @@ const Tablee = () => {
       });
   }, []);
 
-  // const toggle = async () => {
-  //   // fetch(`https://tame-puce-cockatoo-tam.cyclic.app/notes/delete/${noteID}`, {
-  //   //   method: "DELETE",
-  //   //   // headers : {
-  //   //   //     "Authorization" : `Bearer ${localStorage.getItem("psctoken")}`
-  //   //   // }
-  //   // });
-  //   setState(!state);
+  const addbtn = (email) => {
+    console.log(email);
+    setState(!state);
+    fetch(`https://adorable-pear-earrings.cyclic.app/banned`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    // window.location.reload();
+  };
 
-  //   if (state == false) {
-  //     const email = localStorage.getItem("toggleemail");
-  //     console.log(state);
+  
 
-  //     const data = await fetch(
-  //       "https://adorable-pear-earrings.cyclic.app/banned",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           email,
-  //         }),
-  //       }
-  //     );
-  //   }
-  //   if ((state = true)) {
-  //     var idd = localStorage.getItem("toggleemail");
+  
 
-  //     console.log(state);
-  //     const data = await fetch(
-  //       "https://adorable-pear-earrings.cyclic.app/banned",
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     console.log(data);
-  //     // let fin=data.find(idd)
-  //     // console.log(fin)
-  //     // console.log(data)
-  //     //  var id=data.find(idd)
-
-  //     const dele = await fetch(
-  //       "https://adorable-pear-earrings.cyclic.app/banned",
-  //       {
-  //         method: "DELETE",
-  //       }
-  //     );
-  //   }
-  // };
-   const Block = async (email) => {
-    const data = await fetch(
-            "https://adorable-pear-earrings.cyclic.app/banned",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                email
-              }),
-            }
-          );
-      }
-      const Active = async (id) => {
-        const data = await fetch(
-                `https://adorable-pear-earrings.cyclic.app/banned/${id}`,
-                {
-                  method: "DELETE",
-                 
-                }
-              );
-          }
-
- 
   return (
     <>
       {
-        
         <ChakraProvider>
           <TableContainer>
             <Table size="md">
               <Thead>
                 <Tr>
                   <Th>Email</Th>
+                  <Th></Th>
                   <Th>Actions</Th>
-                  <Th>Status</Th>
                 </Tr>
               </Thead>
 
@@ -151,28 +83,31 @@ const Tablee = () => {
                       <>
                         <Tr>
                           <Td>{note.email}</Td>
-                          <Td gap="2px">
-                            <Button >Block</Button>
-                            <Button >Active</Button>
-                          </Td>
-                          {/* {localStorage.setItem("toggleid", note._id)}
-                          {localStorage.setItem("toggleemail", note.email)}
-                          <Td>
+                          <Td>{"    "}</Td>
+                          <Td display="flex" gap="30px">
                             <Button
-                              className={
-                                "toggle--button" +
-                                (state ? "toggle--close" : "")
-                              }
-                              onClick={toggle}
+                              variant="solid"
+                              colorScheme="blue"
+                              onClick={() => addbtn(note.email)}
                             >
-                              {state ? "Blocked" : "Active "}
+                              Block
                             </Button>
+
+                       
+                          </Td>
+                          {/* <Td>
                           </Td> */}
+                          {/* <Td>
+                            <Button
+                              className={"toggle--button" +(state ? "toggle--close" : "")}
+                              onClick={() => addbtn(note.email)}>
+                              {state ? "Block" : "Blocked "}
+                            </Button>
+                          </Td>  */}
                         </Tr>
                       </>
                     );
                   })}
-               
               </Tbody>
             </Table>
           </TableContainer>
