@@ -12,7 +12,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import style from './Navbar.module.css'
 export default function NavSignIn() {
-    let [islogin,setIsLogin]=useState(false)
+    // let [islogin,setIsLogin]=useState(false)
     return (
         <div className={style.rightNavButton}>
             <Menu>

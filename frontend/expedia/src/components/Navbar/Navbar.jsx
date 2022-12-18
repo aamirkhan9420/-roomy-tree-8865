@@ -10,12 +10,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Image,
+  
   MenuItemOption,
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-  useStatStyles,
+  
   IconButton,
 } from '@chakra-ui/react'
 import Moretravel from './Moretravel';
@@ -23,7 +23,7 @@ import NavSignIn from './NavSignIn';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { useEffect } from 'react';
-import { AddIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, RepeatIcon } from '@chakra-ui/icons';
+import {  HamburgerIcon } from '@chakra-ui/icons';
 
 export default function Navbar() {
   const [isLogin, setLogin] = useState(false)
@@ -33,7 +33,7 @@ let [isWindo, setWindo] = useState(window.innerWidth)
     setLogin(false)
   }
   const FetchUser = () => {
-    localStorage.getItem("user") ? setLogin(true) : setLogin(false)
+    JSON.parse(localStorage.getItem("user")) ? setLogin(true) : setLogin(false)
 
   }
   window.addEventListener('resize', function () {
@@ -64,12 +64,12 @@ let [isWindo, setWindo] = useState(window.innerWidth)
               </MenuButton>
 
               <MenuList>
-                <MenuGroup title={`Hi aamir`}>
+                <MenuGroup title={`Hi ${JSON.parse(localStorage.getItem("user")).name}`}>
 
                   <MenuItem textAlign={"center"}>{JSON.parse(localStorage.getItem("user")).email} </MenuItem>
                   <MenuDivider />
 
-                  <Link to={"/Login"}><MenuItem>Account</MenuItem></Link>
+                  <Link to={"/Account"}><MenuItem>Account</MenuItem></Link>
 
 
                 </MenuGroup>
@@ -83,7 +83,7 @@ let [isWindo, setWindo] = useState(window.innerWidth)
           </>
           : <Link to={"/"}><NavSignIn />  </Link>}
         <Link to={"/login"}>
-          <BsFillBellFill />
+          <BsFillBellFill className={style.rightNavButton}/>
 
         </Link>
         <Button className={style.rightNavButton} bg='white' variant='white' size='sm' >Trips</Button>
@@ -104,9 +104,49 @@ let [isWindo, setWindo] = useState(window.innerWidth)
           
         />
           
-        <MenuList  position={"fixed"}   top={"0px"}  >
-          
+        <MenuList  position={"fixed"}   top={"0px"} right={"60px"} >
+        <MenuOptionGroup >
+    {/* <MenuItemOption> */}
+    {isLogin ?
+          <>
+
+            <Menu>
+              <MenuButton className={style.fa_user}>
+                <i class="fa-solid fa-user" as={Button}></i>
+              </MenuButton>
+
+              <MenuList>
+                <MenuGroup title={`Hi ${JSON.parse(localStorage.getItem("user")).name}`}>
+
+                  <MenuItem textAlign={"center"}>{JSON.parse(localStorage.getItem("user")).email} </MenuItem>
+                  <MenuDivider />
+
+                  <Link to={"/Account"}><MenuItem>Account</MenuItem></Link>
+
+
+                </MenuGroup>
+                <MenuDivider />
+                <MenuGroup >
+                  <MenuItem onClick={() => deleteUser()}>Sign out</MenuItem>
+
+                </MenuGroup>
+              </MenuList>
+            </Menu>
+          </>
+          : <Link to={"/"}><NavSignIn />  </Link>}
+        {/* </MenuItemOption> */}
+        </MenuOptionGroup>
     <MenuDivider />
+    <MenuOptionGroup >
+    <MenuItemOption>
+     <Link to={"/login"}>
+          <BsFillBellFill />
+
+        </Link>
+        </MenuItemOption>
+        </MenuOptionGroup>
+    <MenuDivider />
+
     <MenuOptionGroup >
       <MenuItemOption value='email'>Trips</MenuItemOption>
       <MenuItemOption value='phone'>Support</MenuItemOption>

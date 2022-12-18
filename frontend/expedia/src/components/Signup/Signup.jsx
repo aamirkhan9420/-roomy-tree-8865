@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginSignUpNav from "../LoginSignUpNav";
-import  axios from "axios"
+import axios from "axios"
 import style from "./Signup.module.css"
 
 const inputStyle = {
@@ -13,7 +13,7 @@ const inputStyle = {
 }
 
 export default function Signup() {
-    const [strength,setStrength]=useState("")
+    const [strength, setStrength] = useState("")
     const [showPass, setShowPass] = useState(false)
     const handleClick = () => setShowPass(!showPass)
     const [email, setEmail] = useState("")
@@ -22,77 +22,79 @@ export default function Signup() {
 
     const navigate = useNavigate()
     const toast = useToast()
-   
-  const showToast=(msg)=>{
-    toast({
-        title: `${msg}`,
-        position: 'top',
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
-  }  
-    const handlePasswordStrength = () => {
-       
-       
-      
-           let alpabates="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-         for(let i=0;i<alpabates.length;i++){
-            if(password.includes(alpabates[i])&&password.length>=5){
-               if(password.includes("@"||"#"||"$"||"%"||"&"||"*")){
-                if(password.includes("1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9"||"0")){
-                  setStrength(100)  
-                }
-                else{
-                    setStrength(80)
-                }
-                
-               }else{
-                setStrength(60)
 
-               }
-               
-                
+    const showToast = (msg, status) => {
+        toast({
+            title: `${msg}`,
+            position: 'top',
+            status: status,
+            duration: 9000,
+            isClosable: true,
+        })
+    }
+    const handlePasswordStrength = () => {
+
+
+
+        let alpabates = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        for (let i = 0; i < alpabates.length; i++) {
+            if (password.includes(alpabates[i]) && password.length >= 5) {
+                if (password.includes("@" || "#" || "$" || "%" || "&" || "*")) {
+                    if (password.includes("1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "0")) {
+                        setStrength(100)
+                    }
+                    else {
+                        setStrength(80)
+                    }
+
+                } else {
+                    setStrength(60)
+
+                }
+
+
             }
         }
-        
+
     }
     const handleSignup = () => {
-        
-   
-        const payload={
-            email:email,
-          name:name,
-         password:password
-            
-            
-    }
+        console.log(email, password, name)
+        if (email && name && password) {
+            const payload = {
+                email,
+                name,
+                password
+            }
 
-    axios.post("https://adorable-pear-earrings.cyclic.app/user/signup",payload).then((res)=>{
-        console.log(res.data)
-                   
-                    if(res.data){
-                         showToast("signup successful")
-                                setTimeout(() => {
-                                    // let user=JSON.parse(localStorage.getItem("user"))||{}
-                                    if(Object.keys(res).length>2){
-                                      navigate("/")  
-                                    }
-                                    
-                                    
-                                }, 1000);  
-                    }
-                 
-    
-    }).catch((er)=>{
-        showToast("signup failed")
-        console.log(er)
-    })
+
+            axios.post("https://adorable-pear-earrings.cyclic.app/user/signup", payload).then((res) => {
+
+
+                if (res.data) {
+                    showToast("signup successful", 'success')
+                    setTimeout(() => {
+                        localStorage.setItem("user", JSON.stringify(payload))
+                        if (Object.keys(res).length > 2) {
+                            navigate("/login")
+                        }
+
+
+                    }, 1000);
+                }
+
+
+            }).catch((er) => {
+                showToast("signup failed", "error")
+                console.log(er)
+            })
+        } else {
+            showToast("Something is missing", "error")
+        }
 
     }
-useEffect(()=>{
-handlePasswordStrength()
-},[password.length])
+    useEffect(() => {
+        handlePasswordStrength()
+    }, [password.length])
     return (
         <div>
             <LoginSignUpNav />
@@ -108,7 +110,7 @@ handlePasswordStrength()
                                 className={style.inputs}
                                 type='email'
                                 placeholder="Email address"
-                                onChange={(e) => setEmail(e)}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </InputGroup>
                         <InputGroup size='md'>
@@ -143,7 +145,7 @@ handlePasswordStrength()
                         </InputGroup>
 
                         {!password ? <Text textAlign={"left"} fontSize={"12px"} color={"red"}>please enter your password.</Text> : ""}
-                        <Progress value={strength} size='xs' colorScheme='blue' mt='13px' />
+                        <Progress value={strength} size='xs' colorScheme={strength == 100 ? "green" : "blue"} mt='13px' />
                         <Checkbox mt='15px' mb='15px' size='md' colorScheme='blue' defaultChecked>
                             Keep me signed in
                         </Checkbox>
@@ -169,7 +171,7 @@ handlePasswordStrength()
                     </p>
 
                     <p id={style.crt_acnt}>
-                    Already have an account?
+                        Already have an account?
                         <Link className={style.links} to='/login' >Sign in</Link>
                     </p>
 

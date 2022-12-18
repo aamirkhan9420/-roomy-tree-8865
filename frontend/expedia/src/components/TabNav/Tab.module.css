@@ -1,7 +1,8 @@
 .calendar{
    width: 200px !important; 
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgba(0, 0, 0, 0);
     opacity: 1;
     display: block;
@@ -9,4 +10,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 25px;
     height: 25px;
     border-width: thin;
-}
+} */
+/* .Inputgroup{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    align-items: center ;
+
+}  */
+
+ @media screen and (min-width:402px) and (max-width:500px){
+   .tabs{
+    width: 100% !important;
+   
+    padding: 50px !important;
+   }
+  .tab1{
+    
+
+    font-weight: 700;
+    font-size: 10px !important;
+  }
+     
+    }
+    @media screen and (min-width:102px) and (max-width:402px){
+       .tabs{
+         width: 100% !important;
+        
+         padding: 10px !important; 
+       
+        } 
+       .tab1{
+         
+    
+         
+         font-size:10px !important;
+       } 
+          
+         }

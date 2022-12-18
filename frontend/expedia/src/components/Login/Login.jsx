@@ -29,7 +29,7 @@ export default function Login() {
       })
   }  
 const handleSignin=()=>{
-    console.log(email,password)
+    
     const payload={
         
             email:email,
@@ -38,13 +38,13 @@ const handleSignin=()=>{
             
     }
 axios.post("https://adorable-pear-earrings.cyclic.app/user/login",payload).then((res)=>{
-    console.log(res.data)
+   
                 if(res.data){
                 localStorage.setItem("token",JSON.stringify(res.data))
 
                      showTost("sign in successful")
                             setTimeout(() => {
-                                // let user=JSON.parse(localStorage.getItem("user"))||{}
+                                
                                 if(Object.keys(res).length>2){
                                   navigate("/")  
                                 }
@@ -58,31 +58,6 @@ axios.post("https://adorable-pear-earrings.cyclic.app/user/login",payload).then(
     showTost("user not found")
     console.log(er)
 })
-    // fetch("https://adorable-pear-earrings.cyclic.app/user/login",{
-    //     method:"POST",
-    //     body:JSON.stringify(payload),
-    //     headers: {
-    //         'Content-Type': 'application/json'
-             
-    //       },
-    //         }).then((res)=>res.json()).then((res)=>{
-    //             console.log(res)
-    //             // localStorage.setItem("user",JSON.stringify(payload))
-    //             showTost(res.msg)
-    //             setTimeout(() => {
-    //                 // let user=JSON.parse(localStorage.getItem("user"))||{}
-    //                 if(Object.keys(res).length>2){
-    //                   navigate("/")  
-    //                 }
-                    
-                    
-    //             }, 1000);
-            
-            
-    //         }).catch((er)=>console.log(er))
- 
-    
-
     
 }
 

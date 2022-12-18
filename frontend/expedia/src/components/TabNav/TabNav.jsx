@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Input, InputGroup, Stack, Box, color, WrapItem } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Input, InputGroup, Stack, Box, color, WrapItem, SimpleGrid, InputLeftAddon } from '@chakra-ui/react'
 import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 
 import style from "./Tab.module.css"
@@ -37,7 +37,7 @@ export default function TabNav() {
 
   useEffect(() => {
     fetch("https://adorable-pear-earrings.cyclic.app/car").then((res) => res.json()).then((res) => {
-      // console.log(res)
+      console.log(res)
       setCityname(res)
     }).catch((er) => console.log(er))
     fetch("https://adorable-pear-earrings.cyclic.app/flight").then((res) => res.json()).then((res) => {
@@ -55,118 +55,216 @@ export default function TabNav() {
   }, [])
 
   return (
-    <div>
+    <div >
       <Tabs align='center'>
-        <TabList>
-          <Tab>Stays</Tab>
-          <Tab>Flights</Tab>
-          <Tab>Cars</Tab>
-          <Tab>Packages</Tab>
-          <Tab>Things to do</Tab>
+        <TabList   className={style.tabs}>
+        <SimpleGrid minChildWidth='0px' spacing='20px'  display={"flex"}>
+<Box><Tab className={style.tab1} >Stays</Tab></Box>
+<Tab className={style.tab1}>Flights</Tab>
+<Tab className={style.tab1}>Cars</Tab>
+<Tab className={style.tab1}>Things to do</Tab>
+
+
+          
+          </SimpleGrid>
         </TabList>
+        
         <TabPanels >
+          {/* textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"} */}
+          <TabPanel  >
+            <SimpleGrid minChildWidth='120px' spacing='40px'>
+              <Box >
+                <Select placeholder='Going to' defaultValue={location} onChange={(e) => setLocation(e.target.value)}>
+                  {cityname.length > 0 && cityname.map((el, index) => (<option value='option1' key={el._id}>{el.name}</option>))}
 
-          <TabPanel textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"}>
-            <Box textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-              <Select placeholder='Going to' width={"250px"} defaultValue={location} onChange={(e) => setLocation(e.target.value)}>
-                {cityname.length > 0 && cityname.map((el) => (<option value='option1'>{el.name}</option>))}
+
+                </Select >
+              </Box>
+              <Box >
+                <InputGroup>
+                  <InputLeftAddon children='Check-in' /><Input htmlSize={4} type="date" value={checkindate} onChange={(e) => setCheckindate(e.target.value)} />
+                </InputGroup>
+              </Box>
+
+              <Box >
+                <InputGroup>
+                  <InputLeftAddon children='Check-out' />
+                  <Input htmlSize={4} type="date" value={checkOutdate} onChange={(e) => setCheckOutdate(e.target.value)} />
+                </InputGroup>
+              </Box>
+              <Box ><Input htmlSize={4} placeholder={"Travellers 1 room ,2 travellers"} /></Box>
+
+            </SimpleGrid>
+            {/*  <Box textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"} className={style.box} >
+              <Select placeholder='Going to' width={"25%"} defaultValue={location} onChange={(e) => setLocation(e.target.value)}>
+                {cityname.length > 0 && cityname.map((el,index) => (<option value='option1' key={el._id}>{el.name}</option>))}
 
 
               </Select >
-              <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
+              
+              <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"} className={style.Inputgroup}>
                 <label>Check-in</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={checkindate} onChange={(e) => setCheckindate(e.target.value)} />
+                <Input htmlSize={4}  type="date" width={"25%"} value={checkindate} onChange={(e) => setCheckindate(e.target.value)} />
                 <label>Check-out</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={checkOutdate} onChange={(e) => setCheckOutdate(e.target.value)} />
-                <Input htmlSize={4} width='auto' w={"250px"} placeholder={"Travellers 1 room ,2 travellers"} />
+                <Input htmlSize={4}  type="date" width={"25%"} value={checkOutdate} onChange={(e) => setCheckOutdate(e.target.value)} />
+                <Input htmlSize={4}  width={"25%"} placeholder={"Travellers 1 room ,2 travellers"} />
+              </InputGroup>
+
+            </Box>*/}
+            <Link to={"/"}>
+              <Button colorScheme='messenger' paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
+            </Link>
+          </TabPanel>
+
+          {/* textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"} */}
+          <TabPanel >
+            <SimpleGrid minChildWidth='120px' spacing='40px'>
+
+              <Box >
+                <Select placeholder='Leaving from' defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
+                  {flight.length > 0 && flight.map((el, index) => (
+                    <option value='option1' key={el._id}>{el.from}</option>
+                  ))}
+
+
+                </Select >
+              </Box>
+              <Box>
+                <Select placeholder='Going to' defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
+                  {flight.length > 0 && flight.map((el, index) => (
+                    <option value='option1' key={el._id}>{el.to}</option>
+                  ))}
+
+                </Select >
+              </Box>
+              <Box>
+                <InputGroup >
+
+                  <InputLeftAddon children='Departing' />
+
+                  <Input htmlSize={4} width='auto' type="date" value={departing} onChange={(e) => setDeparting(e.target.value)} />
+                </InputGroup>
+
+              </Box>
+              <Box>
+                <InputGroup >
+
+                  <InputLeftAddon children='Returning' />
+                  <Input htmlSize={4} width='auto' type="date" value={returning} onChange={(e) => setReturning(e.target.value)} />
+                </InputGroup>
+
+              </Box>
+            </SimpleGrid>
+            <Link to={"/"}>
+              <Button colorScheme='messenger' paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
+            </Link>
+          </TabPanel>
+          <TabPanel >
+            {/* textAlign={"center"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={"10px"} margin={"auto"} */}
+            <SimpleGrid minChildWidth='120px' spacing='40px'>
+
+              <Box >
+                <Select placeholder='Leaving from' defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
+                  {flight.length > 0 && flight.map((el, index) => (
+                    <option value='option1' key={el._id}>{el.from}</option>
+                  ))}
+
+                </Select >
+              </Box>
+              <Box>
+                <Select placeholder='Going to' defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
+                  {flight.length > 0 && flight.map((el, index) => (
+                    <option value='option1' key={el._id}>{el.to}</option>
+                  ))}
+
+                </Select >
+              </Box>
+            </SimpleGrid>
+            <SimpleGrid minChildWidth='120px' spacing='40px' mt={"10px"}>
+              <Box>
+                <InputGroup >
+
+                  {/* <label>Pick-up date</label> */}
+                  <InputLeftAddon children='Pick-up date' />
+
+                  <Input htmlSize={4} width='auto' type="date" value={pickupdate} onChange={(e) => setPickupdate(e.target.value)} />
+                </InputGroup>
+
+              </Box>
+              <Box>  <InputGroup >
+
+                <InputLeftAddon children='Drop-off date' />
+
+                {/* <label>Drop-off date</label> */}
+                <Input htmlSize={4} width='auto' type="date" value={dropupdate} onChange={(e) => setDropOffdate(e.target.value)} />
+              </InputGroup>
+              </Box>
+              <Box>
+                <InputGroup >
+                  {/* <label>Pick-up time</label> */}
+                  <InputLeftAddon children='Pick-up time' />
+
+                  <Input htmlSize={4} width='auto' type="time" value={pickuptime} onChange={(e) => setPickupTime(e.target.value)} />
+                </InputGroup>
+              </Box>
+
+              <Box>
+                <InputGroup >
+                  <InputLeftAddon children='Drop-off time' />
+
+                  {/* <label>Drop-off time</label> */}
+                  <Input htmlSize={4} width='auto' type="time" value={dropofftime} onChange={(e) => setDropofftime(e.target.value)} />
+
+                </InputGroup>
+              </Box>
+            </SimpleGrid>
+            <Link to={"/"}>
+              <Button colorScheme={"messenger"} paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
+            </Link>
+          </TabPanel>
+
+{/* textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"} */}
+          <TabPanel >
+          <SimpleGrid minChildWidth='120px' spacing='40px'>
+          
+            <Box >
+              <Select placeholder='Leaving from'  defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
+                {flight.length > 0 && flight.map((el, index) => (
+                  <option value='option1' key={el._id}>{el.from}</option>
+                ))}
+
+
+              </Select >
+              </Box>
+              <Box>
+              <Select placeholder='Going to'  defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
+                {flight.length > 0 && flight.map((el) => (
+                  <option value='option1' key={el._id} >{el.to}</option>
+                ))}
+
+              </Select >
+              </Box>
+              <Box>
+              <InputGroup >
+                {/* <label>Departing</label> */}
+                <InputLeftAddon children='Departing' />
+
+                <Input htmlSize={4} width='auto' type="date" value={departing} onChange={(e) => setDeparting(e.target.value)} />
+               </InputGroup>
+               </Box>
+               <Box>
+               <InputGroup>
+                {/* <label>Returning</label> */}
+                <InputLeftAddon children='Returning' />
+              
+                <Input htmlSize={4} width='auto' type="date" value={returning} onChange={(e) => setReturning(e.target.value)} />
               </InputGroup>
 
             </Box>
-            <Button colorScheme='messenger' width={"200px"}>Serach</Button>
-          </TabPanel>
-
-
-          <TabPanel textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"}>
-            <Box textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-              <Select placeholder='Leaving from' width={"250px"} defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.from}</option>
-                ))}
-
-
-              </Select >
-              <Select placeholder='Going to' width={"250px"} defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.to}</option>
-                ))}
-
-              </Select >
-              <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-                <label>Departing</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={departing} onChange={(e) => setDeparting(e.target.value)} />
-                <label>Returning</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={returning} onChange={(e) => setReturning(e.target.value)} />
-              </InputGroup>
-
-            </Box>
-            <Button colorScheme='messenger' width={"200px"}>Serach</Button>
-          </TabPanel>
-          <TabPanel textAlign={"center"} display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={"10px"} margin={"auto"} >
-            <Box textAlign={"center"} display={"flex"} justifyContent={"center"} alignItems={"center"} gap={"10px"} margin={"auto"}>
-              <Select placeholder='Leaving from' width={"500px"} defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.from}</option>
-                ))}
-
-              </Select >
-              <Select placeholder='Going to' width={"500px"} defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.to}</option>
-                ))}
-
-              </Select >
-            </Box>
-            <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-              <label>Pick-up date</label>
-              <Input htmlSize={4} width='auto' type="date" w={"150px"} value={pickupdate} onChange={(e) => setPickupdate(e.target.value)} />
-              <label>Drop-off date</label>
-              <Input htmlSize={4} width='auto' type="date" w={"150px"} value={dropupdate} onChange={(e) => setDropOffdate(e.target.value)} />
-              <label>Pick-up time</label>
-
-              <Input htmlSize={4} width='auto' type="time" w={"150px"} value={pickuptime} onChange={(e) => setPickupTime(e.target.value)} />
-              <label>Drop-off time</label>
-
-              <Input htmlSize={4} width='auto' type="time" w={"150px"} value={dropofftime} onChange={(e) => setDropofftime(e.target.value)} />
-
-            </InputGroup>
-         <Button colorScheme={"messenger"} width={"200px"}>Serach</Button>
-          </TabPanel>
-
-
-          <TabPanel textAlign={"center"} display={"flex"} alignItems={"center"} gap={"30px"} flexDirection={"column"}>
-            <Box textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-              <Select placeholder='Leaving from' width={"250px"} defaultValue={leavingfrom} onChange={(e) => setLeavingfrom(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.from}</option>
-                ))}
-
-
-              </Select >
-              <Select placeholder='Going to' width={"250px"} defaultValue={goingTo} onChange={(e) => setGoingTo(e.target.value)}>
-                {flight.length > 0 && flight.map((el) => (
-                  <option value='option1'>{el.to}</option>
-                ))}
-
-              </Select >
-              <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"}>
-                <label>Departing</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={departing} onChange={(e) => setDeparting(e.target.value)} />
-                <label>Returning</label>
-                <Input htmlSize={4} width='auto' type="date" w={"250px"} value={returning} onChange={(e) => setReturning(e.target.value)} />
-              </InputGroup>
-
-            </Box>
-            <Button colorScheme='messenger' width={"200px"}>Serach</Button>
+            </SimpleGrid>
+            <Link to={"/"}>
+              <Button colorScheme='messenger'  paddingLeft={"40px"} paddingRight={"40px"} mt={"50px"}>Serach</Button>
+            </Link>
           </TabPanel>
 
         </TabPanels>

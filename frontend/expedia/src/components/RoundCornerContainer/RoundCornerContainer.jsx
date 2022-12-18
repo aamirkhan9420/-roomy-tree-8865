@@ -5,12 +5,12 @@ import style from "./RoundCornerContainer.module.css";
 export default function RoundCornerContainer() {
   return (
 
-     
-    
-    <Card className={style.RoundCornerContainer_container}>
-    <CardBody>
-    <TabNav />
-    </CardBody>
-  </Card>
+
+
+    <Card className={style.RoundCornerContainer_container} >
+      <CardBody  >
+        <TabNav />
+      </CardBody>
+    </Card>
   )
 }

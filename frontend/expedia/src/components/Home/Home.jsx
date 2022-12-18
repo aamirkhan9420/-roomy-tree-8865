@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Footer from '../Footer/Footer';
+import IsLoading from '../IsLoading/IsLoading';
 import Navbar from '../Navbar/Navbar';
 import RoundCornerContainer from '../RoundCornerContainer/RoundCornerContainer'
 import Gowithapp from './Gowithapp';
@@ -13,8 +14,10 @@ import style from "./Home.module.css";
 
 export default function Home() {
   
+  
+  
   return (
-    <div>
+    <div className={style.home}>
     <Navbar/>
 
       <RoundCornerContainer />
@@ -26,3 +29,4 @@ export default function Home() {
     </div>
   )
 }
+
