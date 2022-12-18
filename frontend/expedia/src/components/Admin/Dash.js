@@ -40,7 +40,7 @@ const Dash = () => {
     fetch("https://adorable-pear-earrings.cyclic.app/user", {})
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+       
 
         setNotes(res);
         setLoading(false);
@@ -62,7 +62,7 @@ const Dash = () => {
 
     if (state == false) {
       const email = localStorage.getItem("toggleemail");
-      console.log(state);
+      
 
       const data = await fetch(
         "https://adorable-pear-earrings.cyclic.app/banned",
@@ -80,7 +80,6 @@ const Dash = () => {
     if ((state = true)) {
       var idd = localStorage.getItem("toggleemail");
 
-      console.log(state);
       const data = await fetch(
         "https://adorable-pear-earrings.cyclic.app/banned",
         {
@@ -90,7 +89,7 @@ const Dash = () => {
           },
         }
       );
-      console.log(data);
+   
       // let fin=data.find(idd)
       // console.log(fin)
       // console.log(data)

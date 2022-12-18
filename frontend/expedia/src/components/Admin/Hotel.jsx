@@ -14,6 +14,8 @@ import { Grid, GridItem,
 
  } from '@chakra-ui/react'
 import "./Hotel.css"
+import axios from 'axios';
+import {  toast } from "react-toastify";
 
 
 const Hotel = () => {
@@ -24,12 +26,13 @@ const Hotel = () => {
     const [notes, setNotes] = useState("");
     const [state, setState] = useState(false);
     const navigate = useNavigate();
-    useEffect(() => {
+
+    const getdata=()=>{
       setLoading(true);
       fetch("https://adorable-pear-earrings.cyclic.app/hotel", {})
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
+        ;
   
           setNotes(res);
           setLoading(false);
@@ -38,15 +41,23 @@ const Hotel = () => {
           setError(true);
           setLoading(false);
         });
+    }
+    useEffect(() => {
+      getdata()
     }, []);
 
     const deleteNote = (noteID) => {
-      fetch(`https://adorable-pear-earrings.cyclic.app/${noteID}`, {
-          method : "DELETE",
-          // headers : {
-          //     "Authorization" : `Bearer ${localStorage.getItem("psctoken")}`
-          // }
-      })
+     axios.delete(`https://adorable-pear-earrings.cyclic.app/hotel/${noteID}`).then((res)=>{
+     console.log(res.data)
+     toast.error("Hotel data Removed successfully", {
+      position: "top-center",
+    
+    })
+     getdata()
+    
+     }).catch((err)=>{
+console.log(err)
+     })
     }
    
   

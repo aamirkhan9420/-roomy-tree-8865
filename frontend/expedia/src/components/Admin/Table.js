@@ -30,7 +30,6 @@ const Tablee = () => {
     fetch("https://adorable-pear-earrings.cyclic.app/user", {})
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
 
         setNotes(res);
         setLoading(false);
@@ -45,7 +44,7 @@ const Tablee = () => {
   }, []);
 
   const addbtn = (email) => {
-    console.log(email);
+    
     setState(!state);
     fetch(`https://adorable-pear-earrings.cyclic.app/banned`, {
       method: "POST",
