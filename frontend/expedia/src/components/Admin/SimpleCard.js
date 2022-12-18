@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useToast } from "@chakra-ui/react";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +20,8 @@ import {
 } from "@chakra-ui/react";
 
 export default function SimpleCard() {
-  
+  const [passShow, setPassShow] = useState(false);
+  const [cpassShow, setCPassShow] = useState(false);
   const toastt = useToast();
 
   const [inpval, setInpval] = useState({
@@ -33,7 +34,7 @@ export default function SimpleCard() {
     hotelFees: "",
     totalFees: "",
   });
-  
+  const history = useNavigate();
 
   const setVal = (e) => {
     // console.log(e.target.value);
@@ -119,16 +120,16 @@ export default function SimpleCard() {
       console.log(res);
 
       if ((res.msg = "Hotel added successfully")) {
-        toastt({
-          position: "top-center",
-          description: "Room Added Successfully done 😃!",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-        // toast.success("Registration Successfully done 😃!", {
-        //     position: "top-center"
+        // toastt({
+        //   position: "top-center",
+        //   description: "Room Added Successfully done 😃!",
+        //   status: "success",
+        //   duration: 9000,
+        //   isClosable: true,
         // });
+        toast.success(" Hotel added successfully !", {
+            position: "top-center"
+        });
         setInpval({
           ...inpval,
           hotelPic: "",
@@ -158,7 +159,7 @@ export default function SimpleCard() {
   return (
     <>
     {
-  
+     <div>
       <ChakraProvider>
         <Flex
           minH={"100vh"}
@@ -254,7 +255,7 @@ export default function SimpleCard() {
                       bg: "blue.500",}
               }
                     >
-                    Sign in
+                   Add Hotel
                   </Button>
                 </Stack>
               </Stack>
@@ -264,9 +265,10 @@ export default function SimpleCard() {
         </Flex>
         <ToastContainer/>
       </ChakraProvider>
+      </div>
     
     }
-<div>hello</div>
+
     </>
   
   );

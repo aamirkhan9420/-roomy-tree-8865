@@ -35,7 +35,7 @@ const Login = () => {
         const { email, password } = inpval;
 
         if (email === "") {
-            toast.warning("email is required!", {
+            toast.error("email is required!", {
                 position: "top-center"
             });
         } else if (!email.includes("@")) {
@@ -43,17 +43,17 @@ const Login = () => {
                 position: "top-center"
             });
         } else if (password === "") {
-            toast.warning("password is required!", {
+            toast.error("password is required!", {
                 position: "top-center"
             });
         } else if (password.length < 6) {
-            toast.warning("password must be 6 char!", {
+            toast.error("password must be 6 char!", {
                 position: "top-center"
             });
         } else {
             // console.log("user login succesfully done");
 
-            const data = await fetch("http://localhost:8080/admin/login",{
+            const data = await fetch("https://real-cyan-tuna-kit.cyclic.app/admin/login",{
                 method:"POST",
                 body:JSON.stringify({
                      email, password
@@ -70,18 +70,19 @@ const Login = () => {
             if(res.msg=="Login successfull"){
                 console.log(res.token)
                
-                toastt( {
-                 position: "top-center",
-                 description: "LogIn Successfully done 😃!",
-                 status: 'success',
-                 duration: 4000,
-                isClosable: true,
-             });
+                toast.success("SignUp Successfully done 😃!", {
+                    position: "top-center",
+                  });
                 localStorage.setItem("usertoken",res.token);
                 
                 setInpval({...inpval,email:"",password:""});
+
+                setTimeout(function () {
+                    //code goes here
+                    history("/admin/dashboard")
+                    
+                  }, 6000);
                 
-                history("/admin/dashboard")
                 
             }else{
                 toast.error("User dosen't exists", {

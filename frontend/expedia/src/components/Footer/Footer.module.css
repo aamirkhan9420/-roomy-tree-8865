@@ -1,0 +1,21 @@
+.footer_cotainer{
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    height: 550px;
+    /* border: 1px solid red; */
+}
+.footer_main{ 
+    width: 100%;
+    height: 75%;
+    border-bottom: 1px solid gray; 
+}
+.footer_main>h1{
+    text-align: left;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+Td{
+    color:#3662D8;
+}

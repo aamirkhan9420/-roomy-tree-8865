@@ -1,0 +1,89 @@
+#loginDiv {
+    /* border: 1px solid black; */
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+    color: #343B53;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input p {
+    color: red;
+}
+
+#signInHeading {
+    color: #141D38;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.inputs::placeholder {
+    color: #343B53;
+}
+
+#keepP {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#keepP+p {
+    margin-bottom: 20px;
+}
+
+#signInButton {
+    width: 100%;
+    height: 48px;
+}
+
+#forgot {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#crt_acnt {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#crt_acnt+p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.links {
+    color: rgb(49, 49, 245);
+}
+
+.links:hover {
+    text-decoration: underline;
+}
+
+#bottomLogos {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bottomLogos>img {
+    width: 20px;
+    height: 20px;
+}
+
+#bottomLogos>img:nth-child(1) {
+    margin-right: 20px;
+}
+
+#bottomLogos>img:nth-child(3) {
+    margin-left: 20px;
+}

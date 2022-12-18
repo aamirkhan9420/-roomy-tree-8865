@@ -53,7 +53,7 @@ const Login = () => {
         } else {
             // console.log("user login succesfully done");
 
-            const data = await fetch("http://localhost:8080/admin/login",{
+            const data = await fetch("https://real-cyan-tuna-kit.cyclic.app/admin/login",{
                 method:"POST",
                 body:JSON.stringify({
                      email, password
@@ -70,18 +70,19 @@ const Login = () => {
             if(res.msg=="Login successfull"){
                 console.log(res.token)
                
-                toastt( {
-                 position: "top-center",
-                 description: "LogIn Successfully done 😃!",
-                 status: 'success',
-                 duration: 4000,
-                isClosable: true,
-             });
+                toast.success("SignUp Successfully done 😃!", {
+                    position: "top-center",
+                  });
                 localStorage.setItem("usertoken",res.token);
                 
                 setInpval({...inpval,email:"",password:""});
+
+                setTimeout(function () {
+                    //code goes here
+                    history("/admin/dashboard")
+                    
+                  }, 6000);
                 
-                history("/dashboard")
                 
             }else{
                 toast.error("User dosen't exists", {
@@ -118,7 +119,7 @@ const Login = () => {
                         </div>
 
                         <button className='btn' onClick={loginuser}>Login</button>
-                        <p>Don't have an Account? <NavLink to="/register">Sign Up</NavLink> </p>
+                        <p>Don't have an Account? <NavLink to="/admin/register">Sign Up</NavLink> </p>
                     </form>
                     <ToastContainer />
                 </div>

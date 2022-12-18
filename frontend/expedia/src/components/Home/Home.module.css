@@ -1,0 +1,15 @@
+.home{
+    width: 100%;
+}
+.home_big_img_div{
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    height: 400px;
+    border-radius: 10px;
+   
+}
+
+.home_big_img_div>img{
+    border-radius: 10px; 
+}
