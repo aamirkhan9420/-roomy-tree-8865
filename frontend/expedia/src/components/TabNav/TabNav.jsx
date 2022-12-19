@@ -37,7 +37,7 @@ export default function TabNav() {
 
   useEffect(() => {
     fetch("https://adorable-pear-earrings.cyclic.app/car").then((res) => res.json()).then((res) => {
-      console.log(res)
+      // console.log(res)
       setCityname(res)
     }).catch((er) => console.log(er))
     fetch("https://adorable-pear-earrings.cyclic.app/flight").then((res) => res.json()).then((res) => {
@@ -95,22 +95,7 @@ export default function TabNav() {
               <Box ><Input htmlSize={4} placeholder={"Travellers 1 room ,2 travellers"} /></Box>
 
             </SimpleGrid>
-            {/*  <Box textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"} className={style.box} >
-              <Select placeholder='Going to' width={"25%"} defaultValue={location} onChange={(e) => setLocation(e.target.value)}>
-                {cityname.length > 0 && cityname.map((el,index) => (<option value='option1' key={el._id}>{el.name}</option>))}
-
-
-              </Select >
-              
-              <InputGroup textAlign={"center"} display={"flex"} alignItems={"center"} gap={"10px"} className={style.Inputgroup}>
-                <label>Check-in</label>
-                <Input htmlSize={4}  type="date" width={"25%"} value={checkindate} onChange={(e) => setCheckindate(e.target.value)} />
-                <label>Check-out</label>
-                <Input htmlSize={4}  type="date" width={"25%"} value={checkOutdate} onChange={(e) => setCheckOutdate(e.target.value)} />
-                <Input htmlSize={4}  width={"25%"} placeholder={"Travellers 1 room ,2 travellers"} />
-              </InputGroup>
-
-            </Box>*/}
+          
             <Link to={"/hotel"}>
               <Button colorScheme='messenger' paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
             </Link>

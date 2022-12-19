@@ -19,15 +19,28 @@ export default function Login() {
     const [password,setPassword]=useState("")
     const toast = useToast()
     const navigate=useNavigate()
-  const showTost=(msg)=>{
+  const showTost=(type,msg)=>{
     toast({
         title: `${msg}`,
         position: 'top',
-        status: 'success',
+        status: type,
         duration: 9000,
         isClosable: true,
       })
   }  
+  const  handleUser=()=>{
+    axios.get("https://adorable-pear-earrings.cyclic.app/user").then((res)=>{
+       for(let i=0;i<res.data.length;i++){
+        if(res.data[i].email===email){
+           
+            localStorage.setItem("user",JSON.stringify(res.data[i]))
+            
+        }
+       }
+    }).catch((er)=>{
+        console.log(er)
+    })
+  }
 const handleSignin=()=>{
     
     const payload={
@@ -41,8 +54,8 @@ axios.post("https://adorable-pear-earrings.cyclic.app/user/login",payload).then(
    
                 if(res.data){
                 localStorage.setItem("token",JSON.stringify(res.data))
-
-                     showTost("sign in successful")
+                 handleUser()
+                     showTost("success","sign in successful")
                             setTimeout(() => {
                                 
                                 if(Object.keys(res).length>2){
@@ -55,7 +68,7 @@ axios.post("https://adorable-pear-earrings.cyclic.app/user/login",payload).then(
              
 
 }).catch((er)=>{
-    showTost("user not found")
+    showTost("error","user not found")
     console.log(er)
 })
     
