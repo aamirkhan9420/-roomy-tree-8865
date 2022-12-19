@@ -53,9 +53,11 @@ const FetchData = ({ ele }) => {
         </CardBody>
 
         <CardFooter>
-          <Button variant="solid" colorScheme="blue">
+        <Link to={`/hotel/${_id}`}> <Button variant="solid" colorScheme="blue">
             Book now
           </Button>
+
+          </Link>
         </CardFooter>
       </Stack>
     </Card>

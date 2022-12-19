@@ -53,7 +53,7 @@ import {
 
      
       toast({
-        title: "Order Placed Successfully ,Thank You For the Shopping",
+        title: "Booking Successfully ,Thank You For choosing us",
         position: "top",
         isClosable: true,
         status:"success"

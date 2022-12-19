@@ -18,7 +18,6 @@ const getdata=()=>{
   useEffect(()=>{
 if(!data[0])getdata()
 
-console.log(data)
   },[sort])
 
 const sortingFunc=(e)=>{
@@ -33,27 +32,17 @@ l=l.split(" ")[1]
 l=Number(l.split(",").join(""))
 
 if(l>k){
-  if(val=="high"){
-    return 1
-  }else{
-    return -1
-  }
+ return  1
 }else{
-  if(val=="high"){
-    return -1
-  }else{
-    return 1
-  }
+  return -1
 }
 }
-
-
   let newdata=data.sort((a,b)=>{
     return (compare(a,b))
   })
  setData(newdata)
  setsort(!sort)
-
+console.log("Newdata",newdata)
 }
 
   return (

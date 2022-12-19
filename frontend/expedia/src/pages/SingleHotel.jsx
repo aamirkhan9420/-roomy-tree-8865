@@ -9,10 +9,16 @@ import {
   Heading,
   Image,
   Stack,
-  Text,
+  Text,Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,useDisclosure,Input
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 import Map from "./product/map";
 
@@ -32,6 +38,9 @@ import { Skeleton } from "@chakra-ui/react";
 import Navbar from "../components/Navbar/Navbar";
 
 const SinglePage = () => {
+  const navigate=useNavigate()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   let { HotelID } = useParams();
   console.log(HotelID)
@@ -66,6 +75,16 @@ const SinglePage = () => {
     totalFees,
     _id,
   } = data;
+
+  const saveAddress=()=>{
+    onClose()
+    navigate(`/hotel/${_id}/payment`)
+  }
+
+
+  const addAdress=()=>{
+    onOpen()
+  }
 
   return (
     <div>
@@ -135,11 +154,11 @@ const SinglePage = () => {
               </CardBody>
 
               <CardFooter>
-              <Link to={`payment`}>
-              <Button size="lg" variant="solid" colorScheme="blue">
+              
+              <Button onClick={addAdress} size="lg" variant="solid" colorScheme="blue">
                   Reserve a room
                 </Button>
-              </Link>
+            
               </CardFooter>
             </Stack>
           </Card>
@@ -243,6 +262,41 @@ const SinglePage = () => {
         </Box>
       )}
       <Footer/>
+
+
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+       
+      >
+        <DrawerOverlay />
+        <DrawerContent >
+          <DrawerCloseButton />
+          <DrawerHeader>Add New Address</DrawerHeader>
+
+          <DrawerBody >
+            <Input placeholder='Name' />
+            <Input mt="20px" placeholder='City' />
+            <Input mt="20px" placeholder='State' />
+            <Input mt="20px" placeholder='Zipcode' />
+            <Input mt="20px" placeholder='Adresss' />
+            <Input mt="20px" placeholder='Landmark' />
+            <Input  mt="20px" placeholder='Phone' />
+            
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant='outline' mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button onClick={saveAddress} colorScheme='blue'>Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+     
+     
+      </Drawer>
     </div>
   );
 };
