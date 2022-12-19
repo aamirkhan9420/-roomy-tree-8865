@@ -6,6 +6,7 @@ import style from "./Account.module.css";
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Footer from '../Footer/Footer';
 export default function Account() {
   let [name,setName]=useState("")
   let [email,setEmail]=useState("")
@@ -32,12 +33,18 @@ useEffect(()=>{
   handleAccount()
 },[])
   return (
-    <div>
+    <div >
         <LoginSignUpNav/>
         <Card
   direction={{ base: 'column', sm: 'row' }}
   overflow='hidden'
   variant='outline'
+  mt={"20px"}
+  mb={"20px"}
+  ml={"20px"}
+  mr={"20px"}
+
+
 >
   <Image
     objectFit='cover'
@@ -47,7 +54,7 @@ useEffect(()=>{
   />
 
   <Stack>
-    <CardBody>
+    <CardBody textAlign={"left"} >
       <Heading size='md'>Account Detailes</Heading>
       <Text py='2'>
       <span className={style.span}>Name:</span> {name}
@@ -58,8 +65,8 @@ useEffect(()=>{
       <Text py='2'>
       <span className={style.span}>Signup Year:</span>{new Date().getUTCFullYear()}
       </Text>
-      <Text py='2'>
-      <span className={style.span}> Signup Month:</span> {new Date().getMonth()}
+      <Text py='2' >
+      <span className={style.span}>Signup Month:</span> {new Date().getMonth()}
       </Text>
     </CardBody>
 
@@ -72,6 +79,7 @@ useEffect(()=>{
     </CardFooter>
   </Stack>
 </Card>
+<Footer />
     </div>
   )
 }

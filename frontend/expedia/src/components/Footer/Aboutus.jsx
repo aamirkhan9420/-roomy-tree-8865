@@ -6,7 +6,7 @@ export default function Aboutus() {
     return (
         <div>
             <Navbar />
-            <Card m={"auto"} w={"70%"} textAlign={"left"} mt={"100px"}>
+            <Card m={"auto"} w={"70%"} textAlign={"left"} mt={"60px"}>
                 <CardHeader>
                     <Heading size='md'>About Us</Heading>
                     <Text pt='2' fontSize='sm'>

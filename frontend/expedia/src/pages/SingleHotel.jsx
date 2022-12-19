@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Map from "./product/map";
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import {
   FaWifi,
@@ -29,6 +29,7 @@ import {
   FaCar,
 } from "react-icons/fa";
 import { Skeleton } from "@chakra-ui/react";
+import Navbar from "../components/Navbar/Navbar";
 
 const SinglePage = () => {
 
@@ -71,7 +72,7 @@ const SinglePage = () => {
 
 
 
-<Navbar/>
+<Navbar />
 
 {loading && <Skeleton height="600px"/>}
 
