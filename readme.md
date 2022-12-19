@@ -42,7 +42,7 @@ cks</h1>![Screenshot (2028)](https://user-images.githubusercontent.com/101388992
 - Chackra
 - Css3
  <h2>Backend</h2>
--MongoDb atlas
+-MongoDb Atlas
 -Express
 -MVC
 <h1>Author</h1> 
