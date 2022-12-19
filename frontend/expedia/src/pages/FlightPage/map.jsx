@@ -1,0 +1,1 @@
+// import the map from hotel page - filename -map.jsx
