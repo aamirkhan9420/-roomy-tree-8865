@@ -11,6 +11,8 @@ import AdminLogin from "../components/Admin/Login"
 import Register from '../components/Admin/Register'
 import Dash from '../components/Admin/Dash'
 import Error from '../components/Admin/Error'
+import Flightpage from '../pages/FlightPage/Flightpage'
+import SingleFlight from '../pages/FlightPage/SingleFlight'
 
 
 
@@ -25,6 +27,10 @@ export default function Router() {
           <Route path='/Login' element={<Login />}/>
           <Route path='/Signup' element={<Signup />}/>
           <Route path='/Account' element={<Account />}/>
+          <Route path='/flight' element={<Flightpage />}/>
+          <Route path='/flight/:FlightID' element={<SingleFlight />}/>
+          
+          
 
        
           <Route path="/admin" element={<AdminLogin/>} />

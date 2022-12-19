@@ -7,7 +7,7 @@ import { Box, Select } from '@chakra-ui/react'
 
 const Fetchproducts = () => {
 const [data,setData] = useState([]);
-const [sort,setsort]=useState(1)
+const [sort,setsort]=useState(true)
 
 
 const getdata=()=>{
@@ -16,16 +16,45 @@ const getdata=()=>{
 
 
   useEffect(()=>{
-getdata()
-  },[])
+if(!data[0])getdata()
+
+console.log(data)
+  },[sort])
 
 const sortingFunc=(e)=>{
- setsort(e.target.value)
+const val=e.target.value
+const compare=(a,b)=>{
+let k=a.hotelFees
+k=k.split(" ")[1]
+k=Number(k.split(",").join(""))
+
+let l=b.hotelFees
+l=l.split(" ")[1]
+l=Number(l.split(",").join(""))
+
+if(l>k){
+  if(val=="high"){
+    return 1
+  }else{
+    return -1
+  }
+}else{
+  if(val=="high"){
+    return -1
+  }else{
+    return 1
+  }
+}
 }
 
- 
-console.log("sort",sort)
 
+  let newdata=data.sort((a,b)=>{
+    return (compare(a,b))
+  })
+ setData(newdata)
+ setsort(!sort)
+
+}
 
   return (
     <div>
@@ -34,8 +63,8 @@ console.log("sort",sort)
       }
        <Box margin="10px" flex="1">
             <Select onChange={sortingFunc} placeholder='Recomended' size='lg'>
-                <option value={-1}>Price:High to low</option>
-                <option value={1}>Price:low to High</option>
+                <option value="high">Price:High to low</option>
+                <option value="low">Price:low to High</option>
                 </Select>
             </Box>
 
