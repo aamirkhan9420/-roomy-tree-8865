@@ -11,7 +11,7 @@ export default function Logo() {
   borderRadius='full'
  
   minW={"150px"}
-  src='./exprobook.png'
+  src='../exprobook.png'
   alt='logo'
 />
 </Link>
