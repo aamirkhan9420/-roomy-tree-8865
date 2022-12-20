@@ -39,8 +39,8 @@ export default function Router() {
               <Route path="*" element={<Error />} />
               <Route path='/flight' element={<Flightpage />}/>
           <Route path='/flight/:FlightID' element={<SingleFlight />}/>
-          <Route path='aboutus' element={<Aboutus />}/>
-
+          <Route path='/aboutus' element={<Aboutus />}/>
+          <Route path='/flight/:flightID/payment' element={<PaymentPage/>}/>
 
         </Routes>
     </div>

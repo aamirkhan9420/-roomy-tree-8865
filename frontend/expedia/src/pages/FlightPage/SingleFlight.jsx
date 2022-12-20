@@ -132,7 +132,7 @@ const SingleFlight = () => {
               </CardBody>
 
               <CardFooter>
-                <Link to={`payment`}>
+                <Link to={`/flight/${_id}/payment`}>
                   <Button size="lg" variant="solid" colorScheme="blue">
                     Book Now
                   </Button>

@@ -140,7 +140,7 @@ export default function TabNav() {
 
               </Box>
             </SimpleGrid>
-            <Link to={"/"}>
+            <Link to={"/flight"}>
               <Button colorScheme='messenger' paddingLeft={"40px"} paddingRight={"40px"}  mt={"50px"}>Serach</Button>
             </Link>
           </TabPanel>

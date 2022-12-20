@@ -19,7 +19,7 @@ export default function Moretravel() {
                     <Link to={"/hotel"}>
                     <MenuItem p='11px 0px 11px 20px' ><i style={IconStyle} className="fa-solid fa-building"></i> &nbsp;  &nbsp;  &nbsp;Stays</MenuItem>
                     </Link>
-                    <Link to={"/"}>
+                    <Link to={"/flight"}>
                     
                     <MenuItem p='11px 0px 11px 20px' ><i id={style.plan} style={IconStyle} className="fa-solid fa-plane"></i> &nbsp;&nbsp;&nbsp;Flights</MenuItem>
                     </Link>
