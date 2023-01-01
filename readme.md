@@ -41,7 +41,7 @@ cks</h1>![Screenshot (2028)](https://user-images.githubusercontent.com/101388992
   <h2>Frontend</h2>
 - React.js
 - JavaScript
-- Chackra
+- Chakra
 - Css3
  <h2>Backend</h2>
 -MongoDb Atlas
