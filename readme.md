@@ -1,7 +1,7 @@
 
 
 <h1 fontsize="30px">Exprobook</h1>
-#Exprobook.com is online travel shopping plateform. The website can be used to book airline tickets, hotel reservations, car rentals, cruise ships, and vacation packages.
+#Exprobook.com is online travel shopping platform. The website can be used to book airline tickets, hotel reservations, car rentals, cruise ships, and vacation packages.
 <h1>Features</h1>
 <li>Hotels room boking</li>
 <li>Flight ticket booking </li>
